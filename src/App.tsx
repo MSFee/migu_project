@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import IndexHome from './components/home';
+import Header from './components/header';
+import PlayList from './components/playlist';
+import Singer from './components/singer';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path="/" component={Header}>
+      </Route>
+      <Route path="/home" component={IndexHome}></Route>
+      <Route path="/playlist" component={PlayList}></Route>
+      <Route path="/singer" component={Singer}></Route>
+    </Router>
   );
 }
 

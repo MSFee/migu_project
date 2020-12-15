@@ -12,7 +12,7 @@ import BodyBottom from './bodyBottom/index';
 
 function IndexHome() {
     return (<div className="migu_main_body">
-        {/* <div className="shuffing">
+         <div className="shuffing">
             <WengPlay></WengPlay>
         </div>
         <div className="song_catage">
@@ -21,7 +21,7 @@ function IndexHome() {
             <img src="https://cdnmusic.migu.cn/tycms_picture/20/06/169/200617144759295_396x160_2765.png"></img>
             <img src="https://cdnmusic.migu.cn/tycms_picture/20/06/169/200617144901907_396x160_8302.png"></img>
         </div>
-{/* 
+
         <TitleMore title="歌单推荐"></TitleMore>
         <LaylistRecom></LaylistRecom>
         <NewCourier></NewCourier>
@@ -29,9 +29,9 @@ function IndexHome() {
         <NewDiscShelve></NewDiscShelve>
 
         <TitleMore title="数字专辑"></TitleMore>
-        <DigitalAlbum></DigitalAlbum> */}
+        <DigitalAlbum></DigitalAlbum> 
 
-        {/* <BodyBottom></BodyBottom> */}
+        <BodyBottom></BodyBottom>
         <TitleMore title="排行榜"></TitleMore>
         <SongList></SongList>
 
