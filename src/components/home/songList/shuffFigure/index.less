@@ -48,18 +48,21 @@
         }
     }
     .shuff_mask {
-        height: 150px;
-        width: 80px;
-        background-color: black;
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        background: rgba(255,255,255,.2);
         position: absolute;
-        top: 0;
+        top: 50%;
+        transform: translateY(-49%);
         display: flex;
         justify-content: center;
         align-items: center;
+        color: #fff;
+        font-size: 18px;
         cursor: pointer;
-        .icon {
-            width: 80px;
-            height: 150px;
+        &:hover {
+            background-color: #e91e63;
         }
     }
     .mask_right {

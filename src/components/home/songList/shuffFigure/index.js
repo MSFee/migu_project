@@ -1,5 +1,6 @@
 // 首页轮播图
 import React, { useState, useEffect } from 'react';
+import { RightOutlined, LeftOutlined } from '@ant-design/icons'
 import './index.less'
 let timer = null;
 let optionFlag;
@@ -131,7 +132,7 @@ function ShuffFiure() {
                                     currentNode === item.key ? "active" : null,
                                     "shuff_figure_pic",
                                 ].join(" ")}
-                                
+
                                     key={item.key}
                                     style={{ backgroundImage: `url('${item.value}')`, width: imageWidth }}
                                 >
@@ -142,21 +143,23 @@ function ShuffFiure() {
                 </ul>
                 <div
                     className="shuff_mask mask_left"
-                    style={{ opacity: !isShowMaskLeft ? '0' : '0.7' }}
+                    // style={{ opacity: !isShowMaskLeft ? '0' : '0.7' }}
                     onClick={() => handleClick('left')}
                     onMouseEnter={() => handleMouseEnter('left')}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <svg t="1606389915542" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2786" width="200" height="200"><path d="M210.4 511.1 641.3 80.2c22.8-22.8 59.8-22.8 82.6 0 22.8 22.8 22.8 59.8 0 82.6L375.7 511.1l348.3 348.3c22.8 22.8 22.8 59.8 0 82.6-22.8 22.8-59.8 22.8-82.6 0L210.4 511.1 210.4 511.1zM210.4 511.1" p-id="2787" fill="#ffffff"></path></svg>
+                    <LeftOutlined />
                 </div>
+
                 <div
                     className="shuff_mask mask_right"
-                    style={{ opacity: !isShowMaskRight ? '0' : '0.7' }}
+                    // style={{ opacity: !isShowMaskRight ? '0' : '0.7' }}
                     onClick={() => handleClick('right')}
                     onMouseEnter={() => handleMouseEnter('right')}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <svg t="1606389784926" className="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1142" width="200" height="200"><path d="M282.064064 1023.971143a46.544143 46.544143 0 0 1-34.442666-13.497802 50.267674 50.267674 0 0 1 0-70.281655L674.431188 511.985571 247.155957 84.244899a49.802233 49.802233 0 0 1 0-69.816215 50.267674 50.267674 0 0 1 70.281656 0l459.39069 462.64878a49.802233 49.802233 0 0 1 0 69.816214l-459.856132 462.64878a48.87135 48.87135 0 0 1-34.908107 14.428685z" p-id="1143" fill="#ffffff"></path></svg>
+                    <RightOutlined />
+
                 </div>
             </div>
             {/* <div className="shuff_figure_options">

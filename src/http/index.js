@@ -37,7 +37,7 @@ service.interceptors.response.use(
     response => {
         let tmp = response.data;
         if(tmp.code === 200) {
-            return Promise.resolve(tmp.result ?? tmp.data ?? tmp.monthData ?? tmp.products)
+            return Promise.resolve(tmp.result ?? tmp.data ?? tmp.monthData ?? tmp.products ?? tmp.playlist)
         }else {
             return Promise.reject(tmp);
         }

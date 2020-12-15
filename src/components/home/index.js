@@ -7,12 +7,12 @@ import LaylistRecom from './laylistRecom/index';
 import NewCourier from './newCourier/index';
 import NewDiscShelve from './newDiscShelve';
 import DigitalAlbum from './digitalAlbum';
-import SongList from './songList';
+import SongList from './songList/index';
 import BodyBottom from './bodyBottom/index';
 
 function IndexHome() {
     return (<div className="migu_main_body">
-         <div className="shuffing">
+         {/* <div className="shuffing">
             <WengPlay></WengPlay>
         </div>
         <div className="song_catage">
@@ -32,7 +32,7 @@ function IndexHome() {
         <DigitalAlbum></DigitalAlbum> 
 
         <BodyBottom></BodyBottom>
-        <TitleMore title="排行榜"></TitleMore>
+        <TitleMore title="排行榜"></TitleMore> */}
         <SongList></SongList>
 
 
