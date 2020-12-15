@@ -1,0 +1,97 @@
+.migu_header {
+    width: 100%;
+    &_top {
+        width: 100%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        color: #a0a0a0;
+    }
+
+    &_logo {
+        width: 100px;
+        margin-left: 100px;
+    }
+
+    &_options {
+        min-width: 450px;
+        margin-left: 30px;
+    }
+    li {
+        float: left;
+        cursor: pointer;
+        margin-left: 35px;
+    }
+    &_search {
+        display: flex;
+        align-items: center;
+        height: 40px;
+        position: relative;
+        cursor: pointer;
+        margin-left: 15%;
+        transition: width 1s;
+        display: flex;
+        flex-direction: row-reverse;
+
+        .search_content {
+            width: 250px;
+            height: 40px;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            transition: width 1s;
+            overflow: hidden;
+        }
+
+        .search_body {
+            position: absolute;
+        }
+
+        /deep/ .ant-input {
+            height: 40px;
+            outline: 0;
+            border: 0;
+            background-color: #f2f2f2;
+        }
+
+        .search_icon {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            background-color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            right: -20px;
+            z-index: 1;
+
+            &:hover {
+                color: #e91e63;
+            }
+        }
+    }
+
+    &_login {
+        margin-left: 60px;
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &_footer {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        display: flex;
+        border-bottom: 1px solid #f2f2f2;
+        box-shadow: 3px 3px 6px #eee;
+    }
+}

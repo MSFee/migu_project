@@ -1,0 +1,68 @@
+.shuff_figure {
+    width: 450px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    &_main {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 290px;
+    }
+    &_content {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        left: 0;
+        top: 0;
+        width: 15000px;
+        height: 300px;
+    }
+    &_pic {
+        float: left;
+        margin: 0;
+        padding: 0;
+        height: 170px;
+        background-size: 100% 100%;
+        margin-top: 50px;
+    }
+    .active {
+        margin-top: 52px;
+        transition: 0.5s all cubic-bezier(.26, 0.2, .13, 1.32);
+        transform: scale(1.25);
+        border-radius: 10px;
+    }
+    &_options {
+        margin-top: 70px;
+        display: flex;
+        justify-content: center;
+        li {
+            float: left;
+            margin-right: 20px;
+            width: 15px;
+            height: 5px;
+            background-color: #ccc;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+    }
+    .shuff_mask {
+        height: 150px;
+        width: 80px;
+        background-color: black;
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        .icon {
+            width: 80px;
+            height: 150px;
+        }
+    }
+    .mask_right {
+        right: 0;
+    }
+}

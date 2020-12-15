@@ -1,0 +1,136 @@
+.hiddenFont{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.new_courier {
+    height: 500px;
+    position: relative;
+    margin-top: 20px;
+    &_bg {
+        top: 50px;
+        width: 100%;
+        height: 400px;
+        background-color: #f2f2f2;
+        position: absolute;
+    }
+
+    &_left {
+        min-width: 300px;
+        height: 100%;
+        width: 24%;
+        left: 5%;
+        position: absolute;
+        .staticImgBox {
+            width: 100%;
+            height: 100%;
+            img {
+                width: 50%;
+                height: 33%;
+                float: left;
+            }
+        }
+
+        .play_all_songs {
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            line-height: 36px;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 20px;
+            position: absolute;
+            z-index: 1;
+            right: 8.95522%;
+            bottom: 20px;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: url(//cdnmusic.migu.cn/v3/static/img/index/song_layer.png) no-repeat;
+            background-size: 100% 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &_right {
+        height: 100%;
+        position: absolute;
+        width: 63%;
+        right: 5%;
+        display: flex;
+        flex-direction: column;
+
+        .top_category {
+            line-height: 50px;
+
+            li {
+                float: left;
+                margin-right: 20px;
+                cursor: pointer;
+            }
+        }
+
+        .container {
+            height: 100%;
+            min-width: 820px;
+            .item_column {
+                width: 47%;
+                height: 20%;
+                float: left;
+                margin-top: 5px;
+                margin-right: 20px;
+                margin-bottom: 5px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                cursor: pointer;
+                .item_box {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 8px;
+                    position: relative;
+                    overflow: hidden;
+                    .img_full {
+                        width: 100%;
+                        height: 100%;
+                        transition: all .3s linear;
+                    }
+                    .selection {
+                        transform: scale(1.1);
+                    }
+                }
+                .item_info {
+                    height: 80px;
+                    width: 220px;
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: 10px;
+                    .song_name {
+                        margin-top: 10px;
+                        font-size: 15px;
+                        color: #333;
+                        display: inline-block;
+                        .hiddenFont();
+                    }
+                    .singger {
+                        margin-top: 10px;
+                        color: rgba(51,51,51,.4);
+                        .hiddenFont();
+                    }
+                }
+                .item_time {
+                    font-size: 16px;
+                    margin-left: 20px;
+                    color: rgba(51,51,51,.4);
+                }
+            }
+        }
+    }
+}
