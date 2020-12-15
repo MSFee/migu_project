@@ -1,5 +1,6 @@
 // 首页轮播图
 import React, { useState, useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons'
 import './index.less'
 let timer = null;
@@ -13,7 +14,7 @@ const temArr = [
         value: 'https://cdnmusic.migu.cn/tycms_picture/20/04/99/200408163702795_360x360_1614.png',
         key: 2,
     }, {
-        value: 'https://cdnmusic.migu.cn/tycms_picture/20/04/99/200408163702795_360x360_1614.png',
+        value: 'https://cdnmusic.migu.cn/tycms_picture/20/04/99/200408163640868_360x360_6587.png',
         key: 3,
 
     }
@@ -177,4 +178,4 @@ function ShuffFiure() {
         </div>
     )
 }
-export default ShuffFiure;
+export default observer(ShuffFiure);

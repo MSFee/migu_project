@@ -15,9 +15,9 @@ const getBannerList = () => {
     })
 }
 
-getBannerList().then(res => {
-    console.log(res);
-})
+// getBannerList().then(res => {
+//     console.log(res);
+// })
 const temArr = [
   {
       value: 'https://cdnmusic.migu.cn/tycms_picture/20/11/328/201123174408869_1400x350_3312.jpg',

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { observer } from 'mobx-react-lite';
+import { ImgListStore } from '../store/index';
 import service from '../../../../http/index';
 import './index.less'
 
 let currentSongList: Array<any> = [];
 const id: number = 3779629;
 class SongInfo { key!: string | number; songname: any; picUrl: any; singer!: string; }
-const DetailSongList: React.FC<{}> = () => {
-
+const DetailSongList: React.FC<{}> = (props: any) => {
+    // const {} = ImgListStore();
     const [songList, setSongList] = useState<SongInfo[]>();
     const checkSongList = (): void => {
         const temArr: Array<any> = currentSongList.slice(0, 30);
@@ -58,4 +60,4 @@ const DetailSongList: React.FC<{}> = () => {
         }
     </div>
 }
-export default DetailSongList
+export default observer(DetailSongList);
