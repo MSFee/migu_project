@@ -16,7 +16,7 @@ function IndexHome() {
          <div className="shuffing">
             <WengPlay></WengPlay>
         </div>
-        <div className="song_catage">
+        {/* <div className="song_catage">
             <img src="https://cdnmusic.migu.cn/tycms_picture/20/06/169/200617144848198_396x160_1430.png"></img>
             <img src="https://cdnmusic.migu.cn/tycms_picture/20/06/169/200617144824970_396x160_7614.png"></img>
             <img src="https://cdnmusic.migu.cn/tycms_picture/20/06/169/200617144759295_396x160_2765.png"></img>
@@ -36,7 +36,7 @@ function IndexHome() {
         <SongList></SongList>
         <TitleMore title="音乐人"></TitleMore>
         <SingerList></SingerList>
-        <BodyBottom></BodyBottom>
+        <BodyBottom></BodyBottom> */}
 
 
     </div>)

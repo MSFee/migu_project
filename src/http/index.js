@@ -19,7 +19,7 @@ function post(config = {}) {
 // 请求拦截器
 service.interceptors.request.use(
     config => {
-        switch(config.method.toUpperCase()) {
+        switch (config.method.toUpperCase()) {
             case 'GET':
                 return get(config);
             case 'POST':
@@ -29,19 +29,19 @@ service.interceptors.request.use(
         }
     },
     error => {
-        return Promise.reject(error) ;// 请求失败
+        return Promise.reject(error);// 请求失败
     }
 )
 // 处理相应拦截器
 service.interceptors.response.use(
     response => {
         let tmp = response.data;
-        if(tmp.code === 200) {
-            return Promise.resolve(tmp.result ?? tmp.data ?? tmp.monthData ?? tmp.products ?? tmp.playlist ?? tmp.artists)
-        }else {
+        if (tmp.code === 200) {
+            return Promise.resolve(tmp.result ?? tmp.data ?? tmp.monthData ?? tmp.products ?? tmp.playlist ?? tmp.artists ?? tmp.banners)
+        } else {
             return Promise.reject(tmp);
         }
-    },error => {
+    }, error => {
         return Promise.reject(error);
     }
 )

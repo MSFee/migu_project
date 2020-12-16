@@ -23,14 +23,14 @@ const PlayLists = () => {
   };
 
   useEffect(() => {
-    setCurrentKey(mainData[0].id);
+    setCurrentKey(mainData[0]?.id);
     let i = 1;
     timer = setInterval(() => {
       if (i > mainData.length - 1) i = 0;
-      setCurrentKey(mainData[i].id);
+      setCurrentKey(mainData[i]?.id);
       setCurrentIndex(i++);
     }, [2000]);
-  }, []);
+  }, [mainData]);
 
   const renderShadowleft = () => {
     if (currentIndex === 0) return null;
@@ -88,7 +88,7 @@ const PlayLists = () => {
           <Pane
             {...item}
             index={index}
-            key={item.id}
+            key={item?.id}
             left={renderItemLeft(index)}
             handleChange={handleChange}
           />
@@ -101,7 +101,7 @@ const PlayLists = () => {
       <Pane
         {...mainData[endIndex]}
         index={endIndex}
-        key={mainData[endIndex].id}
+        key={mainData[endIndex]?.id}
         left="0"
         handleChange={handleChange}
       />
@@ -110,7 +110,7 @@ const PlayLists = () => {
       <Pane
         {...mainData[0]}
         index={0}
-        key={mainData[0].id}
+        key={mainData[0]?.id}
         left="50%"
         handleChange={handleChange}
       />
