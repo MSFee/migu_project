@@ -8,6 +8,7 @@ import './index.less'
 function LaylistRecom() {
     const [songList, setSongList] = useState([]);
     const [leftImageInfo, setLeftImageInfo] = useState({});
+    const [showId, setShowId] = useState('');
     useEffect(() => {
         getSongList();
     }, [])
@@ -21,6 +22,12 @@ function LaylistRecom() {
             const temObj = res[Math.floor(Math.random() * 10)];
             setLeftImageInfo({ ...temObj })
         })
+    }
+    function handleMouneEnter(id) {
+        setShowId(id);
+    }
+    function handleMouseLeave() {
+        setShowId('');
     }
     return <div className="laylist_recom">
         <div className="laylist_recom_main">
@@ -42,14 +49,17 @@ function LaylistRecom() {
                     songList.map(item => {
                         return <li
                             className="item_box"
-                            key={item.id}>
+                            key={item.id}
+                            onMouseEnter={() => handleMouneEnter(item.id)}
+                            onMouseLeave={handleMouseLeave}
+                            >
                             <div className="item_content"
                                 style={{
                                     backgroundImage: `url(${item.picUrl})`
                                 }}
                             >
                                 <HeadSet playNum={item.playCount}></HeadSet>
-                                <PlayBtn></PlayBtn>
+                                {showId === item.id ? <PlayBtn></PlayBtn> : null}
                             </div>
                             <span className="item_title">{item.name}</span>
                         </li>

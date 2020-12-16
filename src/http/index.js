@@ -3,7 +3,7 @@ import axios from 'axios';
 const service = axios.create({
     baseURL: 'http://106.75.147.83:3000/', // 基础URL
     withCredentials: true,
-    timeout: 15000, // 请求超时
+    timeout: 30000, // 请求超时
 })
 
 // get请求
@@ -37,7 +37,7 @@ service.interceptors.response.use(
     response => {
         let tmp = response.data;
         if(tmp.code === 200) {
-            return Promise.resolve(tmp.result ?? tmp.data ?? tmp.monthData ?? tmp.products ?? tmp.playlist)
+            return Promise.resolve(tmp.result ?? tmp.data ?? tmp.monthData ?? tmp.products ?? tmp.playlist ?? tmp.artists)
         }else {
             return Promise.reject(tmp);
         }

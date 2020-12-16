@@ -1,37 +1,13 @@
 // 首页轮播图
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import { RightOutlined, LeftOutlined } from '@ant-design/icons'
+import { RightOutlined, LeftOutlined, PlayCircleOutlined } from '@ant-design/icons'
+import { ImgListStore } from '../store/index';
 import './index.less'
 let timer = null;
 let optionFlag;
-const temArr = [
-    {
+let indexType = 1;
 
-        value: 'https://cdnmusic.migu.cn/tycms_picture/20/02/36/20020512065402_360x360_2997.png',
-        key: 1,
-    }, {
-        value: 'https://cdnmusic.migu.cn/tycms_picture/20/04/99/200408163702795_360x360_1614.png',
-        key: 2,
-    }, {
-        value: 'https://cdnmusic.migu.cn/tycms_picture/20/04/99/200408163640868_360x360_6587.png',
-        key: 3,
-
-    }
-];
-
-temArr.unshift({
-    value: temArr[temArr.length - 1].value,
-    key: 0
-})
-temArr.push({
-    value: temArr[1].value,
-    key: temArr.length,
-})
-temArr.push({
-    value: temArr[2].value,
-    key: temArr.length,
-})
 
 const optionsArr = [1, 2, 3];
 const trueImageNum = 3; // 真实的图片数量
@@ -39,14 +15,17 @@ const gapDistance = 140; // 左右的间隙距离
 
 let temnode = 1;
 function ShuffFiure() {
+    const { changeSongType, threeImageList } = ImgListStore();
     const [imageWidth, setImageWidthValue] = useState(0)
     const [distanceLeft, setDistanceLeft] = useState(0);
+    const [titleName, setTitleName] = useState("新歌");
     const [isShowMaskLeft, setShowMaskLeft] = useState(false);
     const [isShowMaskRight, setShowMaksRight] = useState(false);
     const [currentNode, setCurrentNode] = useState(1); // 默认选择第一张图片
     useEffect(() => {
         setImageWidth();
     }, []);
+
     function changeNext() {
         setCurrentNode(() => {
             temnode = currentNode === trueImageNum + 1 ? 2 : currentNode + 1;
@@ -103,8 +82,19 @@ function ShuffFiure() {
     function handleClick(flag) {
         if (flag === 'left') {
             changePre();
+            indexType = indexType === 1 ? indexType = 3 : --indexType;
+            changeSongType(indexType);
         } else {
             changeNext();
+            indexType = indexType === 3 ? indexType = 1 : ++indexType;
+            changeSongType(indexType);
+        }
+        if(indexType === 1) {
+            setTitleName("新歌");
+        }else if(indexType === 3) {
+            setTitleName("热歌");
+        }else {
+            setTitleName("原创")
         }
     }
     function changeImage(flag) {
@@ -127,7 +117,7 @@ function ShuffFiure() {
                     style={{ left: `${distanceLeft}px` }}
                 >
                     {
-                        temArr.map(item => {
+                        threeImageList?.map(item => {
                             return (
                                 <li className={[
                                     currentNode === item.key ? "active" : null,
@@ -135,8 +125,9 @@ function ShuffFiure() {
                                 ].join(" ")}
 
                                     key={item.key}
-                                    style={{ backgroundImage: `url('${item.value}')`, width: imageWidth }}
+                                    style={{ backgroundImage: `url('${item.imgUrl}')`, width: imageWidth }}
                                 >
+                                    <img src={item.value}></img>
                                 </li>
                             )
                         })
@@ -161,6 +152,14 @@ function ShuffFiure() {
                 >
                     <RightOutlined />
 
+                </div>
+            </div>
+            <div className="billboard ">
+                <div className="slide_title">尖叫{titleName}榜</div>
+                <div className="new_time">每小时更新</div>
+                <div className="play_billboard">
+                <PlayCircleOutlined />
+                    <span>播放全部</span>
                 </div>
             </div>
             {/* <div className="shuff_figure_options">
