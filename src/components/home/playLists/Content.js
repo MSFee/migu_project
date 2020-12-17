@@ -11,11 +11,19 @@ import "./index.less";
 let timer;
 
 const PlayLists = () => {
-  const { prefixCls, mainData, mainStore } = usePlayListsStore();
+  const { prefixCls, mainStore } = usePlayListsStore();
 
-  const { setCurrentKey, setCurrentIndex, currentIndex } = mainStore;
+  const {
+    setCurrentKey,
+    setCurrentIndex,
+    currentIndex,
+    getBannerList,
+    getMainData,
+  } = mainStore;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getBannerList();
+  }, []);
 
   const handleChange = (id, index) => {
     setCurrentKey(id);
@@ -23,14 +31,15 @@ const PlayLists = () => {
   };
 
   useEffect(() => {
-    setCurrentKey(mainData[0]?.id);
     let i = 1;
-    timer = setInterval(() => {
-      if (i > mainData.length - 1) i = 0;
-      setCurrentKey(mainData[i]?.id);
-      setCurrentIndex(i++);
-    }, [2000]);
-  }, [mainData]);
+    if (getMainData.length) {
+      timer = setInterval(() => {
+        if (i > getMainData.length - 1) i = 0;
+        setCurrentKey(getMainData[i]?.id);
+        setCurrentIndex(i++);
+      }, [2000]);
+    }
+  }, [getMainData]);
 
   const renderShadowleft = () => {
     if (currentIndex === 0) return null;
@@ -46,15 +55,15 @@ const PlayLists = () => {
   const handleMouseLeave = () => {
     let i = currentIndex;
     timer = setInterval(() => {
-      if (i > mainData.length - 1) i = 0;
-      setCurrentKey(mainData[i].id);
+      if (i > getMainData.length - 1) i = 0;
+      setCurrentKey(getMainData[i].id);
       setCurrentIndex(i++);
     }, [2000]);
   };
 
   const renderFooter = () => (
     <div className={`${prefixCls}-footer`}>
-      {map(mainData, ({ id }, index) => (
+      {map(getMainData, ({ id }, index) => (
         <span
           onClick={() => handleChange(id, index)}
           key={index}
@@ -84,7 +93,7 @@ const PlayLists = () => {
     const tempArr = [];
     const mainComponents = (
       <>
-        {map(mainData, (item, index) => (
+        {map(getMainData, (item, index) => (
           <Pane
             {...item}
             index={index}
@@ -95,22 +104,22 @@ const PlayLists = () => {
         ))}
       </>
     );
-    const endIndex = mainData.length - 1;
+    const endIndex = getMainData.length - 1;
 
     const head = (
       <Pane
-        {...mainData[endIndex]}
+        {...getMainData[endIndex]}
         index={endIndex}
-        key={mainData[endIndex]?.id}
+        key={getMainData[endIndex]?.id}
         left="0"
         handleChange={handleChange}
       />
     );
     const end = (
       <Pane
-        {...mainData[0]}
+        {...getMainData[0]}
         index={0}
-        key={mainData[0]?.id}
+        key={getMainData[0]?.id}
         left="50%"
         handleChange={handleChange}
       />
@@ -122,9 +131,13 @@ const PlayLists = () => {
     return <div className={`${prefixCls}-lists`}>{tempArr}</div>;
   };
 
-  useEffect(()=>function(){
-    if(timer) clearInterval(timer);
-  },[])
+  useEffect(
+    () =>
+      function () {
+        if (timer) clearInterval(timer);
+      },
+    []
+  );
 
   return (
     <div
@@ -142,11 +155,11 @@ const PlayLists = () => {
           onClick={() => {
             let tempIndex;
             if (currentIndex === 0) {
-              tempIndex = mainData.length - 1;
+              tempIndex = getMainData.length - 1;
             } else {
               tempIndex = currentIndex - 1;
             }
-            handleChange(mainData[tempIndex].id, tempIndex);
+            handleChange(getMainData[tempIndex].id, tempIndex);
           }}
         >
           <LeftOutlined />
@@ -155,12 +168,12 @@ const PlayLists = () => {
           className={`${prefixCls}-btnGroups-right`}
           onClick={() => {
             let tempIndex;
-            if (currentIndex === mainData.length - 1) {
+            if (currentIndex === getMainData.length - 1) {
               tempIndex = 0;
             } else {
               tempIndex = currentIndex + 1;
             }
-            handleChange(mainData[tempIndex].id, tempIndex);
+            handleChange(getMainData[tempIndex].id, tempIndex);
           }}
         >
           <RightOutlined />
